@@ -375,12 +375,12 @@ typedef uint8_t uint8_t;
 /* ===========================
  *         constants
  * =========================== */
-#define CS_VERSION    "Unofficial"
+#define CS_VERSION    "TnCam"
 #ifndef CS_REVISION
-#define CS_REVISION   "r1"
+#define CS_REVISION   "r76"
 #endif
 #ifndef CS_GIT_VERSION
-#define CS_GIT_VERSION ""
+#define CS_GIT_VERSION "R76"
 #endif
 #ifndef CS_DATE_BUILD
 #define CS_DATE_BUILD  ""
@@ -394,7 +394,7 @@ typedef uint8_t uint8_t;
 #define CS_TARGET "unknown"
 #endif
 #ifndef CS_CONFDIR
-#define CS_CONFDIR    "/var/tuxbox/config"
+#define CS_CONFDIR    "/usr/local/etc"
 #endif
 #ifndef CS_LOGFILE
 #define CS_LOGFILE    "/tmp/ncam.log"
@@ -650,12 +650,12 @@ extern const char *weekdstr;
 /* ===========================
  *      Default Values
  * =========================== */
-#define DEFAULT_INACTIVITYTIMEOUT 0
+#define DEFAULT_INACTIVITYTIMEOUT -1
 #define DEFAULT_TCP_RECONNECT_TIMEOUT 30
 #define DEFAULT_NCD_KEEPALIVE 1
 
 #define DEFAULT_CC_MAXHOPS 3   // default 10
-#define DEFAULT_CC_RESHARE -1   // Use global cfg // default -1
+#define DEFAULT_CC_RESHARE 3   // Use global cfg // default -1
 #define DEFAULT_CC_IGNRSHR -1   // Use global cfg // default -1
 #define DEFAULT_CC_STEALTH -1   // Use global cfg // default -1
 #define DEFAULT_CC_KEEPALIVE 1  // default 0
