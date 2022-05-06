@@ -79,7 +79,7 @@ void findatr(struct s_reader *reader)
 	char *rsakey = NULL, *deskey = NULL, *boxkey = NULL, *pincode = NULL, *aeskeys = NULL;
 	char *boxid = NULL, *ins7E = NULL, *ins7E11 = NULL, *ins2e06 = NULL, *k1_generic = NULL, *k1_unique = NULL;
 #ifdef READER_NAGRA_MERLIN
-	char *mod1 = NULL, *data50 = NULL, *mod50 = NULL, *key60 = NULL, *exp60 = NULL, *nuid = NULL, *cwekey = NULL;
+	char *mod1 = NULL, *mod2 = NULL, *key3588 = NULL, *data50 = NULL, *mod50 = NULL, *key3460 = NULL, *key3310 = NULL, *nuid = NULL, *cwpk0 = NULL;
 #endif
 #endif
 	//char testatr[80] = "3F 77 18 00 00 C2 EB 45 02 6C 90 00";
@@ -106,7 +106,7 @@ void findatr(struct s_reader *reader)
 #ifdef READER_VIACCESS
 		if(strncmp(current.atr, "3F 77 18 00 00 C2 EB 41 02 6C 90 00", 35) == 0)
 		{
-			/* Mega Elite Royale V5 (INT) (0500:043800,050F00) */
+			/* Mega Elite Royale V5 (INT) (0500:050F00) */
 			info(current.providername, "Redlight Mega Elite");
 			deskey = "";
 			boxkey = "";
@@ -122,26 +122,26 @@ void findatr(struct s_reader *reader)
 			pincode = "0000";
 			reader->blockemm = 12;
 		}
-		else if(strncmp(current.atr, "3F 77 18 00 00 C2 7A 41 02 68", 29) == 0)
+	/*	else if(strncmp(current.atr, "3F 77 18 00 00 C2 7A 41 02 68", 29) == 0)
 		{
-			/* more providers: FRANSAT (FR) V4 (0500:041900), SRF (CH) V4 (0500:040810) */
+		
 			info(current.providername, "SRG v4");
 			reader->blockemm = 8;
 		}
 		else if(strncmp(current.atr, "3F 77 18 00 00 C2 7A 44 02 68", 29) == 0)
 		{
-			/* more providers: FRANSAT (FR) V5 (0500:041950), Bis TV V4 (FR) (0500:042800) */
+		
 			info(current.providername, "SRG v5");
 			reader->read_old_classes = 0;
 			reader->blockemm = 8;
-		}
+		}*/
 		else if(strncmp(current.atr, "3F 77 18 00 00 C2 EB 41 02 6C", 29) == 0 ||
 				 strncmp(current.atr, "3F 77 18 00 00 C2 EB 45 02 6C 90 00", 35) == 0)
 		{
 			/* more providers: TNTSAT V4/V5 (FR) (0500:030B00), NTV+ (RU) V6 (0500:050100), SRF (CH) V5 (0500:050800), TVSAT AFRICA (INT) V5 (0500:042840) */
 			info(current.providername, "TNT Viaccess v5");
 			caid = "0500";
-			ident = "0500:030B00,FFF400";
+			ident = "0500:030B00";
 			auprovid = "030B00";
 			//ecmwhitelist = "";
 			deskey = "";
@@ -158,7 +158,7 @@ void findatr(struct s_reader *reader)
 			/* more providers: TNTSAT V6 (FR) (0500:030B00), CANAL+/CANAL (FR) V6 (0500:032830), ORANGE SAT (FR) V6 (0500:032900), SRF (CH) V6 (0500:060200), TELESAT (ex MOBISTAR) (BE) V6 (0500:051900) */
 			info(current.providername, "TNT Viaccess v6");
 			caid = "0500";
-			ident = "0500:030B00,FFF400";
+			ident = "0500:030B00";
 			auprovid = "030B00";
 			//ecmwhitelist = "";
 			deskey = "";
@@ -255,8 +255,8 @@ void findatr(struct s_reader *reader)
 					caid = "0D95";
 					ident = "0D95:000004,000008,00000C,000010";
 					auprovid = "000004";
-					ecmwhitelist = "80,B8,F0";
-					ecmheaderwhitelist = "8070ED81FF0000E880D500010006,8170ED81FF0000E880D500010006,8070B581FF0000B0809D00010006,8170B581FF0000B0809D00010006";
+					/*ecmwhitelist = "80,B8,F0";
+					ecmheaderwhitelist = "8070ED81FF0000E880D500010006,8170ED81FF0000E880D500010006,8070B581FF0000B0809D00010006,8170B581FF0000B0809D00010006";*/
 					reader->cachemm = 1;
 					reader->rewritemm = 3;
 					reader->logemm = 2;
@@ -270,7 +270,7 @@ void findatr(struct s_reader *reader)
 					caid = "0D96";
 					ident = "0D96:000004,000008,00000C,000010";
 					auprovid = "000004";
-					ecmwhitelist = "80,B8,7B,7C";
+					/*ecmwhitelist = "80,B8,7B,7C";*/
 					reader->cachemm = 1;
 					reader->rewritemm = 3;
 					reader->logemm = 2;
@@ -286,8 +286,8 @@ void findatr(struct s_reader *reader)
 					caid = "0D97";
 					ident = "0D97:000004,000008,00000C,000010";
 					auprovid = "000004";
-					ecmwhitelist = "B8,F0,80";
-					ecmheaderwhitelist = "80707D81FF0000788065,81707D81FF0000788065,8070B581FF0000B0809D,8170B581FF0000B0809D,8070ED81FF0000E880D5,8170ED81FF0000E880D5";
+					/*ecmwhitelist = "B8,F0,80";
+					ecmheaderwhitelist = "80707D81FF0000788065,81707D81FF0000788065,8070B581FF0000B0809D,8170B581FF0000B0809D,8070ED81FF0000E880D5,8170ED81FF0000E880D5";*/
 					reader->cachemm = 1;
 					reader->rewritemm = 3;
 					reader->logemm = 2;
@@ -305,20 +305,32 @@ void findatr(struct s_reader *reader)
 			else
 			{
 #ifdef READER_IRDETO
+
+/*
+ident	 = 0624:000000
+rsakey = 2598FE21A1CEF05BBC459F495FCE8F1E811B126FA8933D8DDB6480A93D43CFA7255F009E875814BECF53DA7610D675D20EEBA8A212F9079CBD1D2FAD65362B42
+boxkey = 4FD3B1C6E406AA69
+raduga
+boxkey = A2A3A4A5A6A7A8A9
+rsakey = 45D2D094A62F1AC323A257C848549BEC3EBE992B8E68A125B513A69D01764760DBC4FC160077677DC28B7E708F38F014E7388E96817AC9DDC8149984EB43A12F
+camkey = A0A1A2A3A4A5A6A7
+camkey_data = CAFB64CA970D10DEDF769EDA1A570713C50BE71CA871194FF5820BF7B54606BBB8EC7A1D51B1649A3ED222B53EC58F5638F1E2699F509F3089AFE291CAF5E23C
+*/
+
 				if(chk_caid_rdr(reader, 0x624) || chk_ctab_ex(0x624, &reader->ctab))
 				{
 					/* Skylink (CZ) (0624:FFFFFF) */
 					info(current.providername, "Skylink (CZ)");
 					caid = "0624";
 					ident = "0624:000000";
-					ecmwhitelist = "3C,3E,41,55,5F,59,63,69,4F,6D,45,51,45,47";
+					/*ecmwhitelist = "3C,3E,41,55,5F,59,63,69,4F,6D,45,51,45,47";*/
 					reader->cachemm = 1;
 					reader->rewritemm = 3;
 					reader->logemm = 15;
 					reader->deviceemm = 0;
 					reader->blockemm = 12;
-					rsakey = "";
-					boxkey = "";
+					rsakey = "79EA25A763DA2C3E02B456A13962E60BCE63E628A2C177BE951CED96A9C6131A146F98D5867B7AE6682324FD6481913C0241F065C8D3457E54BB59B7B5DE0362";
+					boxkey = "A1C6F3D8B5E1F2C1";
 				}
 				else if(chk_caid_rdr(reader, 0x650) || chk_ctab_ex(0x650, &reader->ctab))
 				{
@@ -501,14 +513,17 @@ void findatr(struct s_reader *reader)
 				ecmwhitelist = "8F";
 				break;
 			}
+/*	char *mod1 = NULL, *mod2 = NULL, *key3588 = NULL, *data50 = NULL, *mod50 = NULL, *key3460 = NULL, *key3310 = NULL, *nuid = NULL, *cwpk0 = NULL;*/
 			auprovid = "003411";
 			mod1 = "";
+			mod2 = "";
+			key3588 = "";
 			data50 = "";
 			mod50 = "";
-			key60 = "";								
-			exp60 = "";
+			key3460 = "";								
+			key3310 = "";
 			nuid = "";
-			cwekey = "";
+			cwpk0 = "";
 			reader->nagra_read = 2;
 			reader->detect_seca_nagra_tunneled_card = 0;
 			reader->cachemm = 1;
@@ -723,7 +738,7 @@ void findatr(struct s_reader *reader)
 			else
 				n++;
 		}
-		if(key60)
+/*		if(key60)
 		{
 			len = cs_strlen(key60);
 			if(len == 192)
@@ -744,7 +759,7 @@ void findatr(struct s_reader *reader)
 			}
 			else
 				n++;
-		}
+		}*/
 		if(nuid)
 		{
 			len = cs_strlen(nuid);
@@ -756,19 +771,19 @@ void findatr(struct s_reader *reader)
 			else
 				n++;
 		}
-		if(cwekey)
+		if(cwpk0)
 		{
-			len = cs_strlen(cwekey);
+			len = cs_strlen(cwpk0);
 			if(len == 32)
 			{
-				if(!key_atob_l(cwekey, reader->cwekey, len))
-					reader->cwekey_length = len / 2;
+				if(!key_atob_l(cwpk0, reader->cwpk0, len))
+					reader->cwpk0_length = len / 2;
 			}
 			else
 				n++;
 		}
 		if(n)
-			info(current.info, "- no keys built in, use config values mod1 + data50 + mod50 + key60+ exp60 + nuid + cwekey");
+			info(current.info, "- no keys built in, use config values mod1 + mod2 + data50 + mod50 + key3588 +key3460+ key3310 + nuid + cwpk0");
 #endif
 		// Reader specific settings for Videoguard
 		if(boxid)
