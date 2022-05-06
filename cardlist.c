@@ -79,7 +79,7 @@ void findatr(struct s_reader *reader)
 	char *rsakey = NULL, *deskey = NULL, *boxkey = NULL, *pincode = NULL, *aeskeys = NULL;
 	char *boxid = NULL, *ins7E = NULL, *ins7E11 = NULL, *ins2e06 = NULL, *k1_generic = NULL, *k1_unique = NULL;
 #ifdef READER_NAGRA_MERLIN
-	char *mod1 = NULL, *mod2 = NULL, *key3588 = NULL, *data50 = NULL, *mod50 = NULL, *key3460 = NULL, *key3310 = NULL, *nuid = NULL, *cwpk0 = NULL;
+	char *mod1 = NULL, *mod2 = NULL, *key3588 = NULL, *data50 = NULL, *mod50 = NULL, *key3460 = NULL, *key3310 = NULL, *nuid = NULL, *cwekey0 = NULL;
 #endif
 #endif
 	//char testatr[80] = "3F 77 18 00 00 C2 EB 45 02 6C 90 00";
@@ -513,7 +513,7 @@ camkey_data = CAFB64CA970D10DEDF769EDA1A570713C50BE71CA871194FF5820BF7B54606BBB8
 				ecmwhitelist = "8F";
 				break;
 			}
-/*	char *mod1 = NULL, *mod2 = NULL, *key3588 = NULL, *data50 = NULL, *mod50 = NULL, *key3460 = NULL, *key3310 = NULL, *nuid = NULL, *cwpk0 = NULL;*/
+/*	char *mod1 = NULL, *mod2 = NULL, *key3588 = NULL, *data50 = NULL, *mod50 = NULL, *key3460 = NULL, *key3310 = NULL, *nuid = NULL, *cwekey0 = NULL;*/
 			auprovid = "003411";
 			mod1 = "";
 			mod2 = "";
@@ -523,7 +523,7 @@ camkey_data = CAFB64CA970D10DEDF769EDA1A570713C50BE71CA871194FF5820BF7B54606BBB8
 			key3460 = "";								
 			key3310 = "";
 			nuid = "";
-			cwpk0 = "";
+			cwekey0 = "";
 			reader->nagra_read = 2;
 			reader->detect_seca_nagra_tunneled_card = 0;
 			reader->cachemm = 1;
@@ -716,6 +716,17 @@ camkey_data = CAFB64CA970D10DEDF769EDA1A570713C50BE71CA871194FF5820BF7B54606BBB8
 			else
 				n++;
 		}
+		if(mod2)
+		{
+			len = cs_strlen(mod2);
+			if(len == 224)
+			{
+				if(!key_atob_l(mod2, reader->mod2, len))
+					reader->mod2_length = len / 2;
+			}
+			else
+				n++;
+		}
 		if(data50)
 		{
 			len = cs_strlen(data50);
@@ -738,28 +749,39 @@ camkey_data = CAFB64CA970D10DEDF769EDA1A570713C50BE71CA871194FF5820BF7B54606BBB8
 			else
 				n++;
 		}
-/*		if(key60)
+		if(key3588)
 		{
-			len = cs_strlen(key60);
-			if(len == 192)
+			len = cs_strlen(key3588);
+			if(len == 136)
 			{
-				if(!key_atob_l(key60, reader->key60, len))
-					reader->key60_length = len / 2;
+				if(!key_atob_l(key3588, reader->key3588, len))
+					reader->key3588_length = len / 2;
 			}
 			else
 				n++;
 		}
-		if(exp60)
+		if(key3460)
 		{
-			len = cs_strlen(exp60);
-			if(len == 192)
+			len = cs_strlen(key3460);
+			if(len == 96)
 			{
-				if(!key_atob_l(exp60, reader->exp60, len))
-					reader->exp60_length = len / 2;
+				if(!key_atob_l(key3460, reader->key3460, len))
+					reader->key3460_length = len / 2;
 			}
 			else
 				n++;
-		}*/
+		}
+		if(key3310)
+		{
+			len = cs_strlen(key3310);
+			if(len == 16)
+			{
+				if(!key_atob_l(key3310, reader->key3310, len))
+					reader->key3310_length = len / 2;
+			}
+			else
+				n++;
+		}
 		if(nuid)
 		{
 			len = cs_strlen(nuid);
@@ -771,13 +793,13 @@ camkey_data = CAFB64CA970D10DEDF769EDA1A570713C50BE71CA871194FF5820BF7B54606BBB8
 			else
 				n++;
 		}
-		if(cwpk0)
+		if(cwekey0)
 		{
-			len = cs_strlen(cwpk0);
+			len = cs_strlen(cwekey0);
 			if(len == 32)
 			{
-				if(!key_atob_l(cwpk0, reader->cwpk0, len))
-					reader->cwpk0_length = len / 2;
+				if(!key_atob_l(cwekey0, reader->cwekey0, len))
+					reader->cwekey0_length = len / 2;
 			}
 			else
 				n++;
