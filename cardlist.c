@@ -79,7 +79,7 @@ void findatr(struct s_reader *reader)
 	char *rsakey = NULL, *deskey = NULL, *boxkey = NULL, *pincode = NULL, *aeskeys = NULL;
 	char *boxid = NULL, *ins7E = NULL, *ins7E11 = NULL, *ins2e06 = NULL, *k1_generic = NULL, *k1_unique = NULL;
 #ifdef READER_NAGRA_MERLIN
-	char *mod1 = NULL, *mod2 = NULL, *key3588 = NULL, *data50 = NULL, *mod50 = NULL, *key3460 = NULL, *key3310 = NULL, *nuid = NULL, *cwekey0 = NULL;
+	char *mod1 = NULL, *mod2 = NULL, *key3588 = NULL, *data50 = NULL, *mod50 = NULL, *key3460 = NULL, *key3310 = NULL, *nuid = NULL, *cwekey0 = NULL, *idird = NULL;
 #endif
 #endif
 	//char testatr[80] = "3F 77 18 00 00 C2 EB 45 02 6C 90 00";
