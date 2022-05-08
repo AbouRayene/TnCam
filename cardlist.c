@@ -562,16 +562,16 @@ camkey_data = CAFB64CA970D10DEDF769EDA1A570713C50BE71CA871194FF5820BF7B54606BBB8
 				info(current.providername, "Sky Deutschland V13");
 				caid = "09C4";
 				ident = "09C4:000000";
-				ecmheaderwhitelist = "807098000001,817098000001,807060000001,817060000001,80709D000001,81709D000001,80704E000001,81704E000001,807066000001,817066000001,8070B0000001,8170B0000001,8070B3000001,8170B3000001, 8070AF000001, 8170AF000001";
+				ecmheaderwhitelist = "";
 				reader->disablecrccws = 1;
 				disablecrccws_only_for = "09C4:000000";
 				reader->cachemm = 1;
 				reader->rewritemm = 1;
 				reader->logemm = 2;
 				reader->deviceemm = 0;
-				boxid = "";
-				ins7E = "";
-				k1_generic = "8";
+				boxid = "E11809B5";
+				ins7E = "4D00166000000000611809B50000000000010202030002020203";
+				k1_generic = "86C1F1CB6DB59740";
 				reader->blockemm = 15;
 			}
 			snprintf(buf, 63, "3F FD %i 25 02 50 80 0F 41 B0 0A 69 FF 4A 50 F0 00 00 50 31 03", i);
@@ -581,16 +581,16 @@ camkey_data = CAFB64CA970D10DEDF769EDA1A570713C50BE71CA871194FF5820BF7B54606BBB8
 				caid = "098C";
 				ident = "098C:000000";
 				ecmwhitelist = "56,97,98,A0,9A,9C,9D";
-				ecmheaderwhitelist = "81709800000120,80709800000120,8170950000011D,8070950000011D,8070940000011C,8170940000011C,8170540000011D,8070540000011D,8070940000011C94,8170940000011C94,80709A0000011D94,81709A0000011D94";
+				ecmheaderwhitelist = "";
 				reader->disablecrccws = 1;
 				disablecrccws_only_for = "098C:000000";
 				reader->cachemm = 1;
 				reader->rewritemm = 1;
 				reader->logemm = 2;
 				reader->deviceemm = 0;
-				boxid = "";
-				ins7E = "";
-				k1_generic = "";
+				boxid = "E11809B5";
+				ins7E = "4D00166000000000611809B50000000000010202030002020203";
+				k1_generic = "9DD967575464B997077607CEBFF4751A";
 				reader->blockemm = 15;
 			}
 			snprintf(buf, 63, "3F FD %i 25 02 50 80 0F 55 B0 02 69 FF 4A 50 F0 80 00 50 31 03", i);
@@ -606,9 +606,9 @@ camkey_data = CAFB64CA970D10DEDF769EDA1A570713C50BE71CA871194FF5820BF7B54606BBB8
 				reader->logemm = 2;
 				reader->deviceemm = 0;
 				reader->ndsversion = 2;
-				boxid = "";
-				ins7E = "";
-				k1_generic = "";
+				boxid = "E11809B5";
+				ins7E = "4D00166000000000611809B50000000000010202030002020203";
+				k1_generic = "9DD967575464B997077607CEBFF4751A";
 				reader->blockemm = 15;
 			}
 			snprintf(buf, 66, "3F FF %i 25 03 10 80 54 B0 01 69 FF 4A 50 70 00 00 4B 57 01 00 00", i);
@@ -805,8 +805,19 @@ camkey_data = CAFB64CA970D10DEDF769EDA1A570713C50BE71CA871194FF5820BF7B54606BBB8
 			else
 				n++;
 		}
+		if(idird)
+		{
+			len = cs_strlen(idird);
+			if(len == 4)
+			{
+				if(!key_atob_l(idird, reader->idird, len))
+					reader->idird_length = len / 2;
+			}
+			else
+				n++;
+		}
 		if(n)
-			info(current.info, "- no keys built in, use config values mod1 + mod2 + data50 + mod50 + key3588 +key3460+ key3310 + nuid + cwpk0");
+			info(current.info, "- no keys built in, use config values mod1 + mod2 + data50 + mod50 + key3588 +key3460+ key3310 + nuid + cwpk0 + idird");
 #endif
 		// Reader specific settings for Videoguard
 		if(boxid)
