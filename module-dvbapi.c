@@ -2193,7 +2193,7 @@ static void dvbapi_parse_cat_ca_descriptor(int32_t demux_id, const uint8_t *buff
 
 	ca_system_id = b2i(2, buffer);
 	ca_pid = b2i(2, buffer + 2) & 0x1FFF;
-    if (ca_system_id == 0x0000 || ca_pid == 0x1FFF)
+    if (ca_system_id == 0x0000)
     {
         return; // This is not a valid CAID or EMM pid
     }
@@ -3978,7 +3978,7 @@ static void dvbapi_parse_pmt_ca_descriptor(int32_t demux_id, const uint8_t *buff
 
 	ca_system_id = b2i(2, buffer);
 	ca_pid = b2i(2, buffer + 2) & 0x1FFF;
-    if (ca_system_id == 0x0000 || ca_pid == 0x1FFF)
+    if (ca_system_id == 0x0000)
     {
     	return; // This is not a valid CAID or ECM pid
     }	
