@@ -91,6 +91,9 @@ static int32_t ndc_id(struct s_client *cl)
 	case 5:
 		ret = 0x8888; // OSCam
 		break;
+	case 6:
+		ret = 0x1722; // TnCam
+		break;
 	default:
 		ret = 0x8181; // NCam
 	}
@@ -1911,6 +1914,7 @@ const char *newcamd_get_client_name(uint16_t client_id)
 		{ 0x0667, "rq-echo-client" },
 		{ 0x0669, "rq-sssp-client-CW" },
 		{ 0x0769, "JlsRq" },
+		{ 0x1722, "TnCam" },
 		{ 0x414C, "AlexCS" },
 		{ 0x4333, "camd3" },
 		{ 0x4343, "CCcam" },
