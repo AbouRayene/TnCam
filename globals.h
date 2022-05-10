@@ -397,7 +397,7 @@ typedef uint8_t uint8_t;
 #define CS_CONFDIR    "/usr/local/etc"
 #endif
 #ifndef CS_LOGFILE
-#define CS_LOGFILE    "/tmp/ncam.log"
+#define CS_LOGFILE    "/tmp/tncam.log"
 #endif
 #define CS_QLEN       128 // size of request queue
 #define CS_MAXPROV    128
@@ -407,7 +407,7 @@ typedef uint8_t uint8_t;
 
 #define CS_ECMSTORESIZE   16  // use MD5()
 #define CS_EMMSTORESIZE   16  // use MD5()
-#define CS_CLIENT_TIMEOUT 5000
+#define CS_CLIENT_TIMEOUT 7000
 #define CS_CLIENT_MAXIDLE 120
 #define CS_BIND_TIMEOUT   120
 #define CS_DELAY          0
@@ -603,7 +603,7 @@ enum {E2_GLOBAL = 0, E2_GROUP, E2_CAID, E2_IDENT, E2_CLASS, E2_CHID, E2_QUEUE, E
 #define BAN_SLEEPING    4           // Failban mask for sleeping user
 #define BAN_DUPLICATE   8           // Failban mask for duplicate user
 
-#define MAX_HTTP_DYNDNS 3           // maximum allowed Dyndns addresses for webif access
+#define MAX_HTTP_DYNDNS 6           // maximum allowed Dyndns addresses for webif access
 
 #define CHECK_WAKEUP            1
 #define CHECK_ANTICASCADER      2
