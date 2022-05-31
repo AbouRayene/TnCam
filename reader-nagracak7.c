@@ -1642,7 +1642,7 @@ static int32_t nagra3_do_ecm(struct s_reader *reader, const ECM_REQUEST *er, str
 	memset(ecmreq,0xCC,0xC0);
 
 	ecmreq[ 7] = 0x05;
-	ecmreq[ 9] = 0x04;
+	ecmreq[ 9] = 0x00;
 	ecmreq[10] = reader->ecmheader[0];
 	ecmreq[11] = reader->ecmheader[1];
 	ecmreq[12] = reader->ecmheader[2];
