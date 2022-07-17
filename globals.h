@@ -380,7 +380,7 @@ typedef uint8_t uint8_t;
 #define CS_REVISION   "r76"
 #endif
 #ifndef CS_GIT_VERSION
-#define CS_GIT_VERSION "R76"
+#define CS_GIT_VERSION ""
 #endif
 #ifndef CS_DATE_BUILD
 #define CS_DATE_BUILD  ""
